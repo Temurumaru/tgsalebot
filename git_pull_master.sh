@@ -1,0 +1,1 @@
+cd /home/host1845737/2204.uz/htdocs/www/bot/tgsalebot/ && git pull origin master
