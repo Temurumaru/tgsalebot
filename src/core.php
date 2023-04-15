@@ -186,11 +186,11 @@ class Telegrano {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $result = curl_exec($ch);
 
-    $fd = fopen("rst.txt", 'a') or die("не удалось создать файл");
-$str = json_encode($result);
-fwrite($fd, $str);
-fclose($fd);
-    curl_close($ch);
+    // $fd = fopen("rst.txt", 'a') or die("не удалось создать файл");
+    // $str = json_encode($result);
+    // fwrite($fd, $str);
+    // fclose($fd);
+    // curl_close($ch);
 
     return $result;
 
