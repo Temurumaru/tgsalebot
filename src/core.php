@@ -23,7 +23,6 @@ use RedBeanPHP\Util\DispenseHelper as DH;
 /**
  * @name Telegrano
  */
-
 class Telegrano {
   
   /**
