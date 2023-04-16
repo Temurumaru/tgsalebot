@@ -138,7 +138,7 @@ class Telegrano {
   }
 
   public function answerText($text, $panel_keyboard = [], $inline_keyboard = [], $one_time = false, $resizeble = true) {
-    return $this -> sendText($this -> data['chat']['id'], $text, $panel_keyboard, $inline_keyboard, $one_time, $resizeble);
+    return $this -> sendText((@$this -> data['chat']['id']) ? $this -> data['chat']['id'] : $this -> data['callback']['chat']['id'], $text, $panel_keyboard, $inline_keyboard, $one_time, $resizeble);
   }
 
   public function sendVideo(int|string $chat_id, string $video, string $text = "", array $panel_keyboard = [], array $inline_keyboard = [], bool $one_time = false, bool $resizeble = true) {
@@ -174,7 +174,7 @@ class Telegrano {
       'parse_mode' => 'html',
       'caption' => $text,
       'reply_markup' => json_encode($keyboard),
-      'video' => $video,
+      'video' => new CURLFile(realpath($video)),
     ];
 
     $ch = curl_init($tg_server . '/sendVideo');
@@ -195,8 +195,8 @@ class Telegrano {
 
   }
 
-  public function answerVideo(string $video, string $text = "", array $panel_keyboard = [], array $inline_keyboard = [], bool $one_time = false, bool $resizeble = true) {
-    return $this -> sendVideo($this -> data['chat']['id'], $video, $text, $panel_keyboard, $inline_keyboard, $one_time, $resizeble);
+  public function answerVideo(int|string $video, string $text = "", array $panel_keyboard = [], array $inline_keyboard = [], bool $one_time = false, bool $resizeble = true) {
+    return $this -> sendVideo((@$this -> data['chat']['id']) ? $this -> data['chat']['id'] : $this -> data['callback']['chat']['id'], $video, $text, $panel_keyboard, $inline_keyboard, $one_time, $resizeble);
   }
 
   public function sendPhoto(int|string $chat_id, string $photo, string $text = "", array $panel_keyboard = [], array $inline_keyboard = [], bool $one_time = false, bool $resizeble = true) {
@@ -227,7 +227,7 @@ class Telegrano {
       'parse_mode' => 'html',
       'caption' => $text,
       'reply_markup' => json_encode($keyboard),
-      'photo' => $photo,
+      'photo' => new CURLFile(realpath($photo)),
     ];
 
     $ch = curl_init($tg_server . '/sendPhoto');
@@ -245,7 +245,7 @@ class Telegrano {
   }
 
   public function answerPhoto(string $photo, string $text = "", array $panel_keyboard = [], array $inline_keyboard = [], bool $one_time = false, bool $resizeble = true) {
-    return $this -> sendPhoto($this -> data['chat']['id'], $photo, $text, $panel_keyboard, $inline_keyboard, $one_time, $resizeble);
+    return $this -> sendPhoto((@$this -> data['chat']['id']) ? $this -> data['chat']['id'] : $this -> data['callback']['chat']['id'], $photo, $text, $panel_keyboard, $inline_keyboard, $one_time, $resizeble);
   }
 
   public function updateMessage($chat_id, $id, $text, $panel_keyboard = [], $inline_keyboard = [], $one_time = false, $resizeble = true) {
