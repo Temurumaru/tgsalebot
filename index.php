@@ -20,7 +20,7 @@ switch ($message[0]) {
     break;
 
   case '/img':
-    $TG -> answerPhoto('https://2204.uz/bot/tgsalebot/lenin.jpg', 'Helo World! https://marss.uz');
+    $TG -> answerPhoto('https://2204.uz/bot/tgsalebot/lenin.jpg', 'sfn fe ghf gherlgh ewuv he ervh ejv heiv heiovh erwi hdsfiluv heliuv heiug');
     // $TG -> answerText("Assalomu aleykum, Bu botga nomer tashiz, kodni va 24 soatni ishida 5000som pul tushadi");
     break;
 
