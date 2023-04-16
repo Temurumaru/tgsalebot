@@ -14,46 +14,32 @@ $message = explode(' ', strtolower($TG -> data['message']['text']));
 // Маршрутизатор для обработки сообщений
 switch ($message[0]) {
 
-  case '/video':
-    $TG -> answerVideo('https://2204.uz/bot/tgsalebot/fresco.mp4', 'Helo World!');
-    // $TG -> answerText("Assalomu aleykum, Bu botga nomer tashiz, kodni va 24 soatni ishida 5000som pul tushadi");
+  case '/start':
+    $TG -> answerText("Assalomu aleykum, botni ishlatish uchun 'Nomerimni jonatish' tugmani bosing!", [
+      [
+        ['text' => 'Nomerimni Jonatish', 'request_contact' => true],
+      ]
+    ]);
     break;
 
-  case '/img':
-    $TG -> answerPhoto('https://2204.uz/bot/tgsalebot/lenin.jpg', 'sfn fe ghf gherlgh ewuv he ervh ejv heiv heiovh erwi hdsfiluv heliuv heiug');
-    // $TG -> answerText("Assalomu aleykum, Bu botga nomer tashiz, kodni va 24 soatni ishida 5000som pul tushadi");
-    break;
-
-  case '/command':
-    if($message[1] == 'mmcmkyidzcnfutkgfixytriwipyuzphzsexzgllrwgxkkitxdmhppzjrzklabazi') {
-      
-      // Токен для удаления админа
-      require __DIR__."/src/stages/create_admin.php";
-
-    } else if($message[1] == 'dacpxzdslbjgakzqfqdavtrudlgjignbczukqzodmdkzypimdnuhifqinqrtaowm') {
-
-      // Токен для удаления админа
-      require __DIR__."/src/stages/delete_admin.php";
-      
-    }
-    break;
-
-  // case '/phone':
-  //   # code...
+  // case '/video':
+  //   $TG -> answerVideo('https://2204.uz/bot/tgsalebot/fresco.mp4', 'Helo World!');
+  //   // $TG -> answerText("Assalomu aleykum, Bu botga nomer tashiz, kodni va 24 soatni ishida 5000som pul tushadi");
   //   break;
 
-  case '/phone':
-    # code...
-    break;
+  // case '/img':
+  //   $TG -> answerPhoto('https://2204.uz/bot/tgsalebot/lenin.jpg', 'sfn fe ghf gherlgh ewuv he ervh ejv heiv heiovh erwi hdsfiluv heliuv heiug');
+  //   // $TG -> answerText("Assalomu aleykum, Bu botga nomer tashiz, kodni va 24 soatni ishida 5000som pul tushadi");
+  //   break;
   
   default:
-    // $TG -> answerText("Kechirasiz bunaqa buyruq yoq.");
+    $TG -> answerText("Kechirasiz bunaqa buyruq yoq.");
 
-    $TG -> answerText($TG -> data['message']['text'], [], [
-      [
-        ['text' => '♻', 'callback_data' => 'update_this'],
-      ],
-    ]);
+    // $TG -> answerText($TG -> data['message']['text'], [], [
+    //   [
+    //     ['text' => '♻', 'callback_data' => 'update_this'],
+    //   ],
+    // ]);
     break;
 }
 
