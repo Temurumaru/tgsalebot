@@ -11,6 +11,17 @@ $TG = new Telegrano(".env");
 
 $message = explode(' ', strtolower($TG -> data['message']['text']));
 
+// Обработчик регистрации
+if(@$TG -> data['contact']['phone']) {
+  $user = R::dispense("users");
+  $user -> nick = $TG -> data['sender']['nick'];
+  $user -> full_name = $TG -> data['sender']['first_name']." ".$TG -> data['sender']['last_name'];
+  $user -> $TG -> data['chat']['id'];
+  R::store($user);
+
+  require "/src/stages/mess_welcome.php";
+}
+
 // Маршрутизатор для обработки сообщений
 switch ($message[0]) {
 
